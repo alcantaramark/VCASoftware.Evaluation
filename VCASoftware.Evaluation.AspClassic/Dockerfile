@@ -9,7 +9,7 @@
 
 # COPY Pages/ .
 
-FROM mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2022
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 RUN powershell -Command Add-WindowsFeature Web-Server
 
