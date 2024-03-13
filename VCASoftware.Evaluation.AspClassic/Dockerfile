@@ -1,16 +1,10 @@
-# FROM mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2019
-# SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
+FROM mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2019
+SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
-# RUN Remove-Item -Recurse C:\inetpub\wwwroot\*
+RUN Remove-Item -Recurse C:\inetpub\wwwroot\*
 
-# RUN Install-WindowsFeature -Name Web-ASP; Install-WindowsFeature -Name Web-ISAPI-Ext
+RUN Install-WindowsFeature -Name Web-ASP; Install-WindowsFeature -Name Web-ISAPI-Ext
 
-# WORKDIR /inetpub/wwwroot
+WORKDIR /inetpub/wwwroot
 
-# COPY Pages/ .
-
-FROM mcr.microsoft.com/windows/servercore:ltsc2019
-
-RUN powershell -Command Add-WindowsFeature Web-Server
-
-EXPOSE 80
+COPY Pages/ .

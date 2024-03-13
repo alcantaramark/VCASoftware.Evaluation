@@ -1,16 +1,16 @@
 version: '3.4'
 
 services:
-  # evaluationaspnet_service:
-  #   image: evaluationaspnet
-  #   container_name: 'evaluation_aspnet'
-  #   environment:
-  #     - ASPNETCORE_ENVIRONMENT=Development
-  #   build:
-  #     context: ./VCASoftware.Evaluation.AspNet
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - 5174:5174
+  evaluationaspnet_service:
+    image: evaluationaspnet
+    container_name: 'evaluation_aspnet'
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    build:
+      context: ./VCASoftware.Evaluation.AspNet
+      dockerfile: Dockerfile
+    ports:
+      - 5174:5174
   evaluationaspclassic_service:
     image: evaluationaspclassic
     build:
