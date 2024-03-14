@@ -1,0 +1,43 @@
+name: Build ASP Classic Container
+
+on:
+  push:
+    branches: [ "dev" ]
+  pull_request:
+    branches: [ "dev" ]
+
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: ghcr.io
+  
+jobs:
+  build:
+
+    runs-on: windows-latest
+    permissions:
+      contents: read
+      packages: write
+  
+
+    steps:
+      #Check out repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      # Build and push Docker image with Buildx (don't push on PR)
+      # https://github.com/docker/build-push-action
+      - name: Build and push Docker image - ASP Classic
+        if: | 
+            github.event_name != 'pull_request'
+        id: build-and-push
+        uses: mr-smithers-excellent/docker-build-push@v5
+        with:
+          image: 'aspclassic_image'
+          registry: ${{ env.REGISTRY }}
+          dockerfile: .\VCASoftware.Evaluation.AspClassic\Dockerfile
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          labels: 'latest'
+      
+          
+    
