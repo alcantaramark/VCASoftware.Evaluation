@@ -7,4 +7,4 @@ RUN Install-WindowsFeature -Name Web-ASP; Install-WindowsFeature -Name Web-ISAPI
 
 WORKDIR /inetpub/wwwroot
 
-COPY Contacts/ .
+COPY \Contacts .\VCASoftware.Evaluation.AspClassic
