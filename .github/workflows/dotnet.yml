@@ -30,7 +30,7 @@ jobs:
         with:
           image: 'aspclassic_image'
           registry: ${{ env.REGISTRY }}
-          dockerfile: ../../VCASoftware.Evaluation.AspClassic/Dockerfile
+          dockerfile: ../VCASoftware.Evaluation.AspClassic/Dockerfile
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           labels: 'latest'
