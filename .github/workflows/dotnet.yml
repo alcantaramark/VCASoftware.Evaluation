@@ -16,7 +16,7 @@ env:
 jobs:
   build:
 
-    runs-on: windows-server
+    runs-on: windows-latest
   
 
     steps:
