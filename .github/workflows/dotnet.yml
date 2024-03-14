@@ -17,6 +17,9 @@ jobs:
   build:
 
     runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: ./VCASoftware.Evaluation.AspClassic
     steps:
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
@@ -28,7 +31,7 @@ jobs:
         with:
           image: 'aspclassic_image'
           registry: ${{ env.REGISTRY }}
-          directory: VCASoftware.Evaluation.AspClassic/
+          dockerfile: Dockerfile
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           labels: 'latest'
