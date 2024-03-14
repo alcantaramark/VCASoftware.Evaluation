@@ -20,6 +20,11 @@ jobs:
   
 
     steps:
+      #Check out repi
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - run: echo 'refs/heads/dev'
+      
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
       - name: Build and push Docker image - ASP Classic
