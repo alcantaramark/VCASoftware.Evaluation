@@ -18,7 +18,7 @@ jobs:
 
     runs-on: windows-latest
     defaults:
-      run:
+      #run:
         #working-directory: ./VCASoftware.Evaluation.AspClassic
     steps:
       # Build and push Docker image with Buildx (don't push on PR)
