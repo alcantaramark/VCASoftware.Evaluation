@@ -5,5 +5,10 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
-
+  <Target Name="CopyCustomContentOnPublish" AfterTargets="Publish">
+  <ItemGroup>
+    <Views Include="Views\**" />
+  </ItemGroup>
+  <Copy SourceFiles="@(Views)" DestinationFolder="$(PublishDir)%(Views.RelativeDir)" />
+</Target>
 </Project>
