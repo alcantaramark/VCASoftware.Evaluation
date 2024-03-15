@@ -16,8 +16,8 @@ ARG configuration=Release
 WORKDIR /src
 COPY ["./VCASoftware.Evaluation.AspNet/VCASoftware.Evaluation.AspNet.Web/VCASoftware.Evaluation.AspNet.Web.csproj", "VCASoftware.Evaluation.AspNet.Web/"]
 RUN dotnet restore "VCASoftware.Evaluation.AspNet.Web/VCASoftware.Evaluation.AspNet.Web.csproj"
-COPY . .
 WORKDIR "/src/VCASoftware.Evaluation.AspNet.Web"
+COPY . .
 RUN dotnet build "VCASoftware.Evaluation.AspNet.Web.csproj" -c $configuration -o /app/build
 
 FROM build AS publish
