@@ -47,7 +47,7 @@ jobs:
         with:
           image: 'aspnet_image'
           registry: ${{ env.REGISTRY }}
-          dockerfile: ./VCASoftware.Evaluation.AspNet/Dockerfile
+          directory: ./VCASoftware.Evaluation.AspNet
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           labels: 'latest'
