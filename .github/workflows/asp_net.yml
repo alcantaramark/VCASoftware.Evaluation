@@ -52,5 +52,22 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
           tags: latest
       
-          
+      #Azure Login
+      - name: Log in to Azure
+        if: | 
+          github.event_name != 'pull_request'
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      #Deploy Container to Azure
+      #enable
+      - name: Build and deploy Container App
+        if: | 
+          github.event_name != 'pull_request'
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          imageToDeploy: ghcr.io/alcantaramark/aspnet_image:latest
+          containerAppName: vcasoftware-test-aspnet
+          resourceGroup: vcasoftware-test
     
