@@ -37,7 +37,7 @@ jobs:
           dockerfile: .\VCASoftware.Evaluation.AspClassic\Dockerfile
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          labels: 'latest'
+          tags: latest
       
       #Azure Login
       # - name: Log in to Azure
