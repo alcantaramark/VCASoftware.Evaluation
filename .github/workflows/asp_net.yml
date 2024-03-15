@@ -50,7 +50,7 @@ jobs:
           dockerfile: ./VCASoftware.Evaluation.AspNet/Dockerfile
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          labels: 'latest'
+          tags: latest
       
           
     
