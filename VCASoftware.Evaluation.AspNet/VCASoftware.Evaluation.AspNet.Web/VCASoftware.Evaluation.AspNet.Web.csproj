@@ -4,13 +4,10 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
-  <Target Name="CopyCustomContentOnPublish" AfterTargets="Publish">
-    <ItemGroup>
-      <Views Include="Views\**"/>
-    </ItemGroup>
-    <Copy SourceFiles="@(Views)" DestinationFolder="$(PublishDir)%(Views.RelativeDir)"/>
-  </Target>
   <ItemGroup>
+    <Content Update="Views\Home\Index.cshtml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="7.0.17"/>
   </ItemGroup>
 </Project>
