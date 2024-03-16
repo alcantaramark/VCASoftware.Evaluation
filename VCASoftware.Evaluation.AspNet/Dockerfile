@@ -20,7 +20,7 @@ WORKDIR "/src/VCASoftware.Evaluation.AspNet.Web"
 COPY . .
 RUN dotnet build "VCASoftware.Evaluation.AspNet.Web.csproj" -c $configuration -o /app/build
 
-#COPY ./VCASoftware.Evaluation.AspNet/VCASoftware.Evaluation.AspNet.Web/Views/ /app/Views/
+COPY ["./VCASoftware.Evaluation.AspNet/VCASoftware.Evaluation.AspNet.Web/Views/", "VCASoftware.Evaluation.AspNet.Web/Views"]
 
 FROM build AS publish
 ARG configuration=Release
