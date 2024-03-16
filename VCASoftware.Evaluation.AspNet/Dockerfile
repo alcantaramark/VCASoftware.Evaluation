@@ -20,11 +20,13 @@ WORKDIR "/src/VCASoftware.Evaluation.AspNet.Web"
 COPY . .
 RUN dotnet build "VCASoftware.Evaluation.AspNet.Web.csproj" -c $configuration -o /app/build
 
+COPY ./VCASoftware.Evaluation.AspNet/VCASoftware.Evaluation.AspNet.Web/Views/ /app/Views/
+
 FROM build AS publish
 ARG configuration=Release
 RUN dotnet publish "VCASoftware.Evaluation.AspNet.Web.csproj" -c $configuration -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /publish .
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "VCASoftware.Evaluation.AspNet.Web.dll"]
