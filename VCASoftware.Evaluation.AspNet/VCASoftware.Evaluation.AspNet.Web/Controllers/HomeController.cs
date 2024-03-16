@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using VCASoftware.Evaluation.AspNet.Web.Models;
+using Microsoft.Extensions.Logging;
 
 namespace VCASoftware.Evaluation.AspNet.Web.Controllers;
 
