@@ -1,7 +1,11 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+builder.Services.AddControllersWithViews()
+    .AddRazorOptions(options => {
+        options.ViewLocationFormats.Add(("Views/"));
+    });
+
 
 var app = builder.Build();
 
