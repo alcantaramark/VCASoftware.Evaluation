@@ -14,9 +14,9 @@ USER appuser
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 ARG configuration=Release
 WORKDIR /src
-COPY ["./VCASoftware.Evaluation.AspNet.Web/VCASoftware.Evaluation.AspNet.Web.csproj", "VCASoftware.Evaluation.AspNet.Web/"]
-RUN dotnet restore "VCASoftware.Evaluation.AspNet.Web/VCASoftware.Evaluation.AspNet.Web.csproj" -r linux-musl-x64
-WORKDIR "/src/VCASoftware.Evaluation.AspNet.Web"
+COPY ["./VCASoftware.Evaluation.AspNet.Web/VCASoftware.Evaluation.AspNet.Web.csproj", "VCASoftware.Evaluation.AspNet.Web_build/"]
+RUN dotnet restore "VCASoftware.Evaluation.AspNet.Web_build/VCASoftware.Evaluation.AspNet.Web.csproj" -r linux-musl-x64
+WORKDIR "/src/VCASoftware.Evaluation.AspNet.Web_build"
 COPY . .
 RUN dotnet build "VCASoftware.Evaluation.AspNet.Web.csproj" -c $configuration -o /app/build -r linux-musl-x64 --no-restore
 
