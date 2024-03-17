@@ -14,17 +14,17 @@ USER appuser
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 ARG configuration=Release
 WORKDIR /src
-COPY ["./VCASoftware.Evaluation.AspNet.Web/VCASoftware.Evaluation.AspNet.Web.csproj", "VCASoftware.Evaluation.AspNet.Web/"]
-RUN dotnet restore "VCASoftware.Evaluation.AspNet.Web/VCASoftware.Evaluation.AspNet.Web.csproj" -r linux-musl-x64
-WORKDIR "/src/VCASoftware.Evaluation.AspNet.Web"
+COPY ["./VCASoftware.Evaluation.AspNet.Web/VCASoftware.Evaluation.AspNet.Web.csproj", "VCASoftware.Evaluation.AspNet.Web_build/"]
+RUN dotnet restore "VCASoftware.Evaluation.AspNet.Web_build/VCASoftware.Evaluation.AspNet.Web.csproj" -r linux-musl-x64
+WORKDIR "/src/VCASoftware.Evaluation.AspNet.Web_build"
 COPY . .
-RUN dotnet build "VCASoftware.Evaluation.AspNet.Web.csproj" -c $configuration -o /app/build -r linux-musl-x64 -o /app --no-restore
+RUN dotnet build "VCASoftware.Evaluation.AspNet.Web.csproj" -c $configuration -o /app/build -r linux-musl-x64 --no-restore
 
 #COPY ["./VCASoftware.Evaluation.AspNet.Web/Views/", "VCASoftware.Evaluation.AspNet.Web/Views"]
 
 FROM build AS publish
 ARG configuration=Release
-RUN dotnet publish "VCASoftware.Evaluation.AspNet.Web.csproj" -c $configuration -o /app/publish /p:UseAppHost=false -r linux-musl-x64 -o /app --no-restore
+RUN dotnet publish "VCASoftware.Evaluation.AspNet.Web.csproj" -c $configuration -o /app/publish /p:UseAppHost=true -r linux-musl-x64 --no-restore
 
 FROM base AS final
 WORKDIR /app
