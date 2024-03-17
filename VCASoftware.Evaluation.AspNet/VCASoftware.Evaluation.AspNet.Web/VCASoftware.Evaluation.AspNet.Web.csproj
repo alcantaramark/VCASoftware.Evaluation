@@ -11,12 +11,6 @@
     <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
-    <EmbeddedResource>
-      <Link>Views/Home/Index.cshtml</Link>
-      <Link>Views/Home/Privacy.cshtml</Link>
-      <Link>Views/Shared/_ViewImports.cshtml</Link>
-      <Link>Views/Shared/_ViewStart.cshtml</Link>
-    </EmbeddedResource>
   </PropertyGroup>
 
 </Project>
