@@ -24,7 +24,7 @@ jobs:
 
       #Install Linux libraries
       - name: Installing Libraries
-        run: sudo apt update && apt install -y gcc musl-dev make
+        run: sudo apt update && sudo apt install -y gcc musl-dev make
       - name: Additional Scripts
         run: ln -s /usr/lib/x86_64-linux-musl/libc.so /lib/libc.musl-x86_64.so.1
    
