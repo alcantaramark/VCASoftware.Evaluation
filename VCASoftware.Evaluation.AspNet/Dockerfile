@@ -30,4 +30,4 @@ RUN dotnet publish "VCASoftware.Evaluation.AspNet.Web.csproj" -c $configuration 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "VCASoftware.Evaluation.AspNet.Web.dll"]
+ENTRYPOINT ["dotnet", "vcasoftware.aspnet.dll"]
