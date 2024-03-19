@@ -20,13 +20,13 @@ COPY ["./VCASoftware.Evaluation.AspNet.Web/Views/*", "VCASoftware.Evaluation.Asp
 RUN dotnet restore "VCASoftware.Evaluation.AspNet.Web_build/VCASoftware.Evaluation.AspNet.Web.csproj" -r linux-musl-x64
 WORKDIR "/src/VCASoftware.Evaluation.AspNet.Web_build"
 COPY . .
-RUN dotnet build "VCASoftware.Evaluation.AspNet.Web.csproj" -c $configuration -o /app/build -r linux-musl-x64 --no-restore
+RUN dotnet build "VCASoftware.Evaluation.AspNet.Web.csproj" -c $configuration -o /app/build -r linux-musl-x64 --no-restore --self-contained
 
 #COPY ["./VCASoftware.Evaluation.AspNet.Web/Views/", "VCASoftware.Evaluation.AspNet.Web/Views"]
 
 FROM build AS publish
 ARG configuration=Release
-RUN dotnet publish "VCASoftware.Evaluation.AspNet.Web.csproj" -c $configuration -o /app/publish /p:UseAppHost=true -r linux-musl-x64 --no-restore
+RUN dotnet publish "VCASoftware.Evaluation.AspNet.Web.csproj" -c $configuration -o /app/publish /p:UseAppHost=true --self-contained -r linux-musl-x64 --no-restore
 
 FROM base AS final
 WORKDIR /app
