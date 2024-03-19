@@ -11,8 +11,7 @@ ENV ASPNETCORE_URLS=http://+:5174
 RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
 USER appuser
 
-# RUN sudo apt update && sudo apt install -y gcc musl-dev make
-# RUN sudo ln -s /usr/lib/x86_64-linux-musl/libc.so /lib/libc.musl-x86_64.so.1
+RUN apk add --no-cache libc6-compat
 
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 ARG configuration=Release
